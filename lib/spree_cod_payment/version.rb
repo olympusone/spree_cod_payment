@@ -1,11 +1,7 @@
 module SpreeCodPayment
-  VERSION = '1.0.0'.freeze
+  VERSION = '2.0.0'.freeze
 
-  module_function
-
-  # Returns the version of the currently loaded SpreeCodPayment as a
-  # <tt>Gem::Version</tt>.
-  def version
-    Gem::Version.new VERSION
+  def gem_version
+    Gem::Version.new(VERSION)
   end
 end

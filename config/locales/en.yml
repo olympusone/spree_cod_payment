@@ -1,3 +1,5 @@
+---
 en:
-  cod_payment:
-    charge_label: Cash on delivery charge
+  spree:
+    cod_payment_method: Cash on Delivery
+    cod_fee: Cash on Delivery Fee

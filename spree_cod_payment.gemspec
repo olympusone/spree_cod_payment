@@ -7,31 +7,33 @@ require 'spree_cod_payment/version'
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_cod_payment'
-  s.version     = SpreeCodPayment.version
-  s.summary     = 'Spree Cash On Delivery Payment'
+  s.version     = SpreeCodPayment::VERSION
+  s.summary     = 'Spree Commerce Cash On Delivery Payment Extension'
   s.description = 'Adds Cash on Delivery (COD) payment method to Spree stores.'
 
-  s.required_ruby_version = '>= 2.5'
+  s.required_ruby_version = '>= 3.0'
 
-  s.author       = 'OlympusOne'
-  s.email        = 'info@olympusone.com'
-  s.homepage     = 'https://github.com/olympusone/spree_cod_payment'
-  s.license      = 'MIT'
+  s.author    = 'OlympusOne'
+  s.email     = 'info@olympusone.com'
+  s.homepage  = 'https://github.com/olympusone/spree_cod_payment'
+  s.license   = 'MIT'
 
-  # s.metadata = {
-  #   "bug_tracker_uri"   => "$#{s.homepage}/issues",
-  #   "changelog_uri"     => "$#{s.homepage}/releases/tag/v#{s.version}",
-  #   "documentation_uri" => "https://docs.spreecommerce.org/",
-  #   "source_code_uri"   => "$#{s.homepage}/tree/v#{s.version}",
-  # }
+  s.metadata = {
+    "bug_tracker_uri"   => "#{s.homepage}/issues",
+    "changelog_uri"     => "#{s.homepage}/releases/tag/v#{s.version}",
+    "documentation_uri" => s.homepage,
+    "homepage_uri"      => s.homepage,
+    "source_code_uri"   => "#{s.homepage}/tree/v#{s.version}",
+  }
 
-  s.files       = `git ls-files`.split("\n").reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
+  s.files        = Dir["{app,config,db,lib,vendor}/**/*", "LICENSE.md", "Rakefile", "README.md"].reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  spree_version = '>= 4.3.2'
+  spree_version = '>= 5.0.4'
   s.add_dependency 'spree', spree_version
-  s.add_dependency 'spree_backend', spree_version
+  s.add_dependency 'spree_storefront', spree_version
+  s.add_dependency 'spree_admin', spree_version
   s.add_dependency 'spree_extension'
 
   s.add_development_dependency 'spree_dev_tools'
