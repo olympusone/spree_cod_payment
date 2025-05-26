@@ -1,0 +1,5 @@
+el:
+  spree:
+    charge: Χρέωση
+  cod_payment:
+    charge_label: Έξοδα αντικαταβολής
