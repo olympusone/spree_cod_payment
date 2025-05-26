@@ -1,6 +1,6 @@
 # SpreeCodPayment
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/2d267f05a2c5bc404d1f/maintainability)](https://codeclimate.com/github/olympusone/spree_cod_payment/maintainability)
+[![Gem Version](https://badge.fury.io/rb/spree_cod_payment.svg)](https://badge.fury.io/rb/spree_cod_payment)
 
 Spree Cash On Delivery Payment extension allows web store administrator to ship order before payment is done.
 

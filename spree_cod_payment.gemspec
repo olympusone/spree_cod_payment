@@ -9,13 +9,21 @@ Gem::Specification.new do |s|
   s.name        = 'spree_cod_payment'
   s.version     = SpreeCodPayment.version
   s.summary     = 'Spree Cash On Delivery Payment'
-  s.description = ''
+  s.description = 'Adds Cash on Delivery (COD) payment method to Spree stores.'
+
   s.required_ruby_version = '>= 2.5'
 
   s.author       = 'OlympusOne'
   s.email        = 'info@olympusone.com'
   s.homepage     = 'https://github.com/olympusone/spree_cod_payment'
   s.license      = 'MIT'
+
+  # s.metadata = {
+  #   "bug_tracker_uri"   => "$#{s.homepage}/issues",
+  #   "changelog_uri"     => "$#{s.homepage}/releases/tag/v#{s.version}",
+  #   "documentation_uri" => "https://docs.spreecommerce.org/",
+  #   "source_code_uri"   => "$#{s.homepage}/tree/v#{s.version}",
+  # }
 
   s.files       = `git ls-files`.split("\n").reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
   s.require_path = 'lib'
