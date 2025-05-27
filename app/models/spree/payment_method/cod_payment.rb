@@ -1,17 +1,21 @@
 module Spree
-  class PaymentMethod::CodPayment < ::Spree::PaymentMethod
+  class PaymentMethod::CodPayment < Spree::PaymentMethod
     preference :cod_fee, :decimal, default: 0
-    
+
     def method_type
       type.demodulize.underscore
     end
 
-    def name
+    def default_name
       Spree.t(:cod_payment_method)
     end
 
     def source_required?
-      false
+      true
+    end
+
+    def payment_source_class
+      Spree::CodPayment
     end
 
     def auto_capture?
@@ -19,7 +23,7 @@ module Spree
     end
 
     def actions
-      %w{capture void}
+      %w[capture void]
     end
 
     # Indicates whether its possible to capture the payment
