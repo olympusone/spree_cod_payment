@@ -10,6 +10,10 @@ module Spree
       Spree.t(:cod_payment_method)
     end
 
+    def payment_profiles_supported?
+      true
+    end
+
     def source_required?
       true
     end
@@ -28,12 +32,12 @@ module Spree
 
     # Indicates whether its possible to capture the payment
     def can_capture?(payment)
-      payment.order.shipped?
+      payment.pending? && payment.order.shipped?
     end
 
     # Indicates whether its possible to void the payment.
     def can_void?(payment)
-      !payment.order.shipped?
+      !payment.void?
     end
 
     def capture(*)
@@ -44,16 +48,32 @@ module Spree
       simulated_successful_billing_response
     end
 
-    def void(*)
+    def credit(*)
       simulated_successful_billing_response
     end
 
-    def credit(*)
+    def authorize(amount, source, options = {})
+      order = source.payment.order
+
+      Spree::Adjustable::Adjuster::CodFee.new(order).apply
+
+      simulated_successful_billing_response
+    end
+
+    def void(response_code, source, options = {})
+      order = source.payment.order
+      Spree::Adjustable::Adjuster::CodFee.new(order).cancel
+
       simulated_successful_billing_response
     end
 
     def cod_payment?
       true
+    end
+
+    def create_profile(payment)
+      # This method is intentionally left blank.
+      # The CodPayment does not require a profile creation.
     end
 
     private

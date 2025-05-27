@@ -1,0 +1,12 @@
+<% if @order.cod_fee? %>
+  <% @cod_fee = @order.adjustments.cod_fee.take %>
+
+  <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+    <span data-hook='admin_order_cod_fee_title'>
+      <%= Spree.t(:cod_fee) %>
+    </span>
+    <span id='order_cod_fee'>
+      <%= @cod_fee.display_amount.to_html %>
+    </span>
+  </li>
+<% end %>

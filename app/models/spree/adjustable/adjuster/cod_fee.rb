@@ -17,7 +17,8 @@ module Spree
 
           adjustment = @adjustable.adjustments.find_or_initialize_by(
             order: @adjustable,
-            source: cod_payment.payment_method
+            source_id: cod_payment.source.id,
+            source_type: cod_payment.source.class.name
           )
 
           adjustment.amount = cod_fee
@@ -27,6 +28,26 @@ module Spree
           adjustment.included = false
 
           adjustment.save!
+
+          @adjustable.update_totals
+          @adjustable.persist_totals
+        end
+
+        def cancel
+          return unless @adjustable.is_a?(Spree::Order)
+
+          cod_payment = @adjustable.payments.valid.detect { |p| p.payment_method.is_a?(Spree::PaymentMethod::CodPayment) }
+          return unless cod_payment
+
+          adjustment = @adjustable.adjustments.find_by(
+            order: @adjustable,
+            source_id: cod_payment.source.id,
+            source_type: cod_payment.source.class.name
+          )
+
+          return unless adjustment
+
+          adjustment.destroy!
 
           @adjustable.update_totals
           @adjustable.persist_totals

@@ -1,0 +1,3 @@
+<%= f.fields_for :source_attributes do |source_form| %>
+  <%= source_form.hidden_field :cod_fee, value: payment_method.preferred_cod_fee.to_d %>
+<% end %>

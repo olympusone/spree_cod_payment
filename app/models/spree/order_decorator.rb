@@ -1,15 +1,9 @@
-module Spree::OrderDecorator
-    def self.prepended(base)
-        base.has_many :payment_adjustments, through: :payments, source: :adjustments
+module Spree
+  module OrderDecorator
+    def cod_fee?
+      payment_method.is_a?(Spree::PaymentMethod::CodPayment)
     end
-
-    def cod_payment?
-        return false unless ship_address.country_iso == 'GR'
-        
-        payments.where.not(state: ['failed', 'void'])
-                .map { |m| m.payment_method.type }
-                .include?("Spree::PaymentMethod::CodPayment")
-    end
+  end
 end
 
-::Spree::Order.prepend(Spree::OrderDecorator)
+Spree::Order.prepend Spree::OrderDecorator
