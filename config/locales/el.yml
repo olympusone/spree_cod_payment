@@ -1,5 +1,9 @@
 ---
 el:
+  activerecord:
+    attributes:
+      spree/shipping_method:
+        cod: Με αντικαταβολή
   spree:
+    cod: Αντικαταβολή
     cod_payment_method: Αντικαταβολή
-    cod_fee: Χρέωση Αντικαταβολής

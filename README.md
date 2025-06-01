@@ -12,7 +12,19 @@ This is a Cash On Delivery Payment extension for [Spree Commerce](https://spreec
     bundle add spree_cod_payment
     ```
 
-2. Restart your server
+2. Install the migrations:
+
+    ```sh
+    bundle exec rake railties:install:migrations FROM=spree_cod_payment
+    ```
+
+3. Run the migrations:
+
+    ```sh
+    bundle exec rails db:migrate
+    ```
+
+4. Restart your server
 
   If your server was running, restart it so that it can find the assets properly.
 

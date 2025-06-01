@@ -12,9 +12,9 @@ module SpreeCodPayment
     config.after_initialize do |app|
       app.config.spree.payment_methods << Spree::PaymentMethod::CodPayment
 
-      app.config.spree_admin.order_page_summary_partials << 'spree/admin/orders/cod_payment_summary'
+      app.config.spree_admin.shipping_method_form_partials << 'spree/admin/shipping_methods/cod_form'
 
-      Spree::PermittedAttributes.source_attributes << :cod_fee
+      Spree::PermittedAttributes.shipping_method_attributes << :cod
     end
 
     def self.activate

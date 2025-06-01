@@ -1,5 +1,9 @@
 ---
 en:
+  activerecord:
+    attributes:
+      spree/shipping_method:
+        cod: Cash on Delivery
   spree:
+    cod: Cash on Delivery
     cod_payment_method: Cash on Delivery
-    cod_fee: Cash on Delivery Fee

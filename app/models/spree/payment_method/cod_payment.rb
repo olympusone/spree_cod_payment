@@ -1,7 +1,5 @@
 module Spree
   class PaymentMethod::CodPayment < Spree::PaymentMethod
-    preference :cod_fee, :decimal, default: 0
-
     def method_type
       type.demodulize.underscore
     end
@@ -10,16 +8,8 @@ module Spree
       Spree.t(:cod_payment_method)
     end
 
-    def payment_profiles_supported?
-      true
-    end
-
     def source_required?
-      true
-    end
-
-    def payment_source_class
-      Spree::CodPayment
+      false
     end
 
     def auto_capture?
@@ -50,30 +40,6 @@ module Spree
 
     def credit(*)
       simulated_successful_billing_response
-    end
-
-    def authorize(amount, source, options = {})
-      order = source.payment.order
-
-      Spree::Adjustable::Adjuster::CodFee.new(order).apply
-
-      simulated_successful_billing_response
-    end
-
-    def void(response_code, source, options = {})
-      order = source.payment.order
-      Spree::Adjustable::Adjuster::CodFee.new(order).cancel
-
-      simulated_successful_billing_response
-    end
-
-    def cod_payment?
-      true
-    end
-
-    def create_profile(payment)
-      # This method is intentionally left blank.
-      # The CodPayment does not require a profile creation.
     end
 
     private
