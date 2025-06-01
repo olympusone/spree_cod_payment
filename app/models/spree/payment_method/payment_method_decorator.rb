@@ -1,9 +1,9 @@
 module Spree
   module PaymentMethodDecorator
     def available_for_order?(order)
-      return super unless order.shipping_method&.cod?
+      return cod_payment? && super if order.shipping_method&.cod?
 
-      cod_payment? && super
+      !cod_payment? && super
     end
 
     def cod_payment?

@@ -7,3 +7,8 @@ el:
   spree:
     cod: Αντικαταβολή
     cod_payment_method: Αντικαταβολή
+    storefront:
+      checkout:
+        cod_payment_method:
+          title: Αντικαταβολή
+          description: Θα πληρώσετε την παραγγελία σας με μετρητά κατά την παράδοση στη διεύθυνσή σας.

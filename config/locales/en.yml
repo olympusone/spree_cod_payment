@@ -7,3 +7,8 @@ en:
   spree:
     cod: Cash on Delivery
     cod_payment_method: Cash on Delivery
+    storefront:
+      checkout:
+        cod_payment_method:
+          title: Cash on Delivery
+          description: You will pay for your order in cash when it is delivered to your address.
