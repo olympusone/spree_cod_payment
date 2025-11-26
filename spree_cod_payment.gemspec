@@ -8,15 +8,15 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_cod_payment'
   s.version     = SpreeCodPayment::VERSION
-  s.summary     = 'Spree Commerce Cash On Delivery Payment Extension'
-  s.description = 'Adds Cash on Delivery (COD) payment method to Spree stores.'
+  s.summary     = 'Spree Commerce Cash On Delivery (COD) Extension'
+  s.description = 'Adds Cash on Delivery (COD) payment method option during checkout.'
 
   s.required_ruby_version = '>= 3.0'
 
   s.author    = 'OlympusOne'
   s.email     = 'info@olympusone.com'
   s.homepage  = 'https://github.com/olympusone/spree_cod_payment'
-  s.license   = 'MIT'
+  s.license   = 'AGPL-3.0-or-later'
 
   s.metadata = {
     "bug_tracker_uri"   => "#{s.homepage}/issues",
@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  spree_version = '>= 5.0.4'
+  spree_version = '>= 5.1.8'
   s.add_dependency 'spree', spree_version
   s.add_dependency 'spree_storefront', spree_version
   s.add_dependency 'spree_admin', spree_version

@@ -8,6 +8,10 @@ module Spree
       Spree.t(:cod_payment_method)
     end
 
+    def payment_icon_name
+      'cash'
+    end
+
     def source_required?
       false
     end
