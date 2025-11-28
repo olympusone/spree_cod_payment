@@ -22,6 +22,42 @@ This is a Cash On Delivery Payment extension for [Spree Commerce](https://spreec
 
   If your server was running, restart it so that it can find the assets properly.
 
+## Usage
+
+1. Create a Payment Method for Cash on Delivery (e.g. name: "Cash on Delivery") whose `method_type` is `cod_payment`.
+2. This gem supplies helpers:
+   * `payment_method.cod_payment?`
+   * `payment_method.cod_payment_available?(order)` (true when the order’s shipping method supports COD)
+3. To show the COD payment method ONLY when eligible (and optionally hide it for store pickup), add a decorator in the host app:
+
+````ruby
+module Spree
+  module PaymentMethodDecorator
+    def available_for_order?(order)
+      return false unless super
+
+      # Show COD only when shipping method allows it.
+      if cod_payment_available?(order)
+        return cod_payment?
+      end
+
+      # If integrating with store pickup (from spree_store_pickup):
+      if respond_to?(:store_pickup_available?) && store_pickup_available?(order)
+        return false if cod_payment?            # Hide COD during pickup
+        return !cod_payment?                    # Allow other methods
+      end
+
+      # Hide specialized method when its condition is not met.
+      return false if cod_payment?
+
+      true
+    end
+  end
+
+  PaymentMethod.prepend PaymentMethodDecorator
+end
+````
+
 ## Developing
 
 1. Create a dummy app
