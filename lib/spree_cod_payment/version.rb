@@ -1,5 +1,5 @@
 module SpreeCodPayment
-  VERSION = '2.1.4'.freeze
+  VERSION = '2.1.5'.freeze
 
   def gem_version
     Gem::Version.new(VERSION)
