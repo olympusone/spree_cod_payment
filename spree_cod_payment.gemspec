@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.author    = 'OlympusOne'
   s.email     = 'info@olympusone.com'
   s.homepage  = 'https://github.com/olympusone/spree_cod_payment'
-  s.license   = 'AGPL-3.0-or-later'
+  s.license   = 'MIT'
 
   s.metadata = {
     "bug_tracker_uri"   => "#{s.homepage}/issues",
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
     "source_code_uri"   => "#{s.homepage}/tree/v#{s.version}",
   }
 
-  s.files        = Dir["{app,config,db,lib,vendor}/**/*", "LICENSE.md", "Rakefile", "README.md"].reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
+  s.files        = Dir["{app,config,db,lib,vendor}/**/*", "LICENSE", "Rakefile", "README.md"].reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
   s.require_path = 'lib'
   s.requirements << 'none'
 
